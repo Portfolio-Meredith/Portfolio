@@ -100,12 +100,11 @@ export default function Skills({ skills }: SkillsProps) {
               {items.map((skill, tagIndex) => (
                 <motion.span
                   key={skill._id}
-                  className="border border-border text-fg"
+                  className="border border-lavande text-gris rounded-full"
                   style={{
-                    fontSize: '0.7rem',
-                    backgroundColor: '#f9fafb',
-                    borderRadius: '4px',
-                    padding: '0.25rem 0.6rem',
+                    fontSize: '0.65rem',
+                    fontWeight: 500,
+                    padding: '0.2rem 0.65rem',
                   }}
                   initial={{ opacity: 0, y: 6 }}
                   whileInView={{ opacity: 1, y: 0 }}

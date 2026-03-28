@@ -29,10 +29,7 @@ export default async function Home() {
 
   return (
     <div className="bg-bg min-h-screen">
-      <main
-        className="mx-auto"
-        style={{ maxWidth: '620px', padding: '0 1.5rem' }}
-      >
+      <main className="mx-auto" style={{ maxWidth: '620px', padding: '0 1.5rem' }}>
         <Hero
           title={settings?.heroTitle ?? "bonjour, je suis\nmérédith 👋"}
           sub={settings?.heroSub ?? "Étudiante en communication à l'EFAP Lyon — Stratégie de marque & digital"}
@@ -60,27 +57,26 @@ export default async function Home() {
         )}
 
         {education?.length > 0 && (
-          <>
-            <div style={{ padding: '3rem 0' }}>
-              <EducationList education={education} />
-            </div>
-            <hr className="border-t border-border" />
-          </>
+          <div style={{ padding: '3rem 0' }}>
+            <EducationList education={education} />
+          </div>
         )}
 
         {projects?.length > 0 && (
           <>
-            <Projects projects={projects} />
             <hr className="border-t border-border" />
+            <Projects projects={projects} />
           </>
         )}
 
         {skills?.length > 0 && (
           <>
-            <Skills skills={skills} />
             <hr className="border-t border-border" />
+            <Skills skills={skills} />
           </>
         )}
+
+        <hr className="border-t border-border" />
 
         <Contact
           linkedinUrl={settings?.linkedinUrl}
@@ -88,6 +84,7 @@ export default async function Home() {
           cvPdfUrl={settings?.cvPdfUrl}
         />
       </main>
+
       <Footer />
     </div>
   )

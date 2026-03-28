@@ -24,7 +24,6 @@ interface Project {
   title: string
   missionType: string
   date: string
-  description: string
   image?: unknown
   tags: string[]
   slug: string
@@ -94,13 +93,11 @@ export default function Projects({ projects }: ProjectsProps) {
         Une sélection de projets réalisés en formation et en stage.
       </motion.p>
 
-      <div
-        className="grid gap-6 text-left"
-        style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
         {projects.map((project, index) => (
           <motion.div
             key={project._id}
+            className="flex flex-col"
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
@@ -111,7 +108,6 @@ export default function Projects({ projects }: ProjectsProps) {
               title={project.title}
               missionType={project.missionType}
               date={project.date ? formatProjectDate(project.date) : ''}
-              description={project.description}
               imageUrl={project.image ? urlFor(project.image).width(800).quality(80).auto('format').url() : undefined}
               tags={project.tags ?? []}
               slug={project.slug}
