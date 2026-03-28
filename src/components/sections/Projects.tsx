@@ -93,13 +93,11 @@ export default function Projects({ projects }: ProjectsProps) {
         Une sélection de projets réalisés en formation et en stage.
       </motion.p>
 
-      <div
-        className="grid gap-6 text-left"
-        style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
         {projects.map((project, index) => (
           <motion.div
             key={project._id}
+            className="flex flex-col"
             variants={fadeUp}
             initial="hidden"
             whileInView="show"

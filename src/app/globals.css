@@ -16,9 +16,6 @@
   --color-border:  #e5e7eb;
   --color-bg:      #ffffff;
 
-  /* Font */
-  --font-sans: Inter, "Inter Fallback", ui-sans-serif, system-ui, sans-serif,
-               "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .img-zoom {
@@ -30,8 +27,9 @@
 }
 
 @theme inline {
-  --font-heading:    var(--font-sans);
-  --font-sans:    var(--font-sans);
+  --font-sans: var(--font-inter), "Inter Fallback", ui-sans-serif, system-ui, sans-serif,
+               "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-heading: var(--font-inter), "Inter Fallback", ui-sans-serif, system-ui, sans-serif;
   --color-sidebar-ring:    var(--sidebar-ring);
   --color-sidebar-border:    var(--sidebar-border);
   --color-sidebar-accent-foreground:    var(--sidebar-accent-foreground);
@@ -151,4 +149,12 @@
   html {
     @apply font-sans;
   }
+}
+
+/* ── Overrides projet — doit venir après le @theme inline de shadcn ── */
+@theme {
+  --color-muted:   #6b7280;
+  --color-border:  #e5e7eb;
+  --color-fg:      #0a0a0a;
+  --color-bg:      #ffffff;
 }

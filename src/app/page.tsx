@@ -29,7 +29,6 @@ export default async function Home() {
 
   return (
     <div className="bg-bg min-h-screen">
-      {/* Colonne CV — 620px */}
       <main className="mx-auto" style={{ maxWidth: '620px', padding: '0 1.5rem' }}>
         <Hero
           title={settings?.heroTitle ?? "bonjour, je suis\nmérédith 👋"}
@@ -62,20 +61,14 @@ export default async function Home() {
             <EducationList education={education} />
           </div>
         )}
-      </main>
 
-      {/* Section Projets — breakout 860px */}
-      {projects?.length > 0 && (
-        <>
-          <hr className="border-t border-border" />
-          <div className="mx-auto" style={{ maxWidth: '860px', padding: '0 1.5rem' }}>
+        {projects?.length > 0 && (
+          <>
+            <hr className="border-t border-border" />
             <Projects projects={projects} />
-          </div>
-        </>
-      )}
+          </>
+        )}
 
-      {/* Colonne centrée — 620px */}
-      <main className="mx-auto" style={{ maxWidth: '620px', padding: '0 1.5rem' }}>
         {skills?.length > 0 && (
           <>
             <hr className="border-t border-border" />
