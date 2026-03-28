@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  /* Couleurs projet */
+  --color-nuit:    #3A395E;
+  --color-gris:    #6E6D8F;
+  --color-lavande: #D5D5E7;
+  --color-orange:  #C85E0C;
+  --color-fg:      #0a0a0a;
+  --color-muted:   #6b7280;
+  --color-subtle:  #9ca3af;
+  --color-border:  #e5e7eb;
+  --color-bg:      #ffffff;
+
+  /* Font */
+  --font-sans: Inter, "Inter Fallback", ui-sans-serif, system-ui, sans-serif,
+               "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.img-zoom {
+  transition: transform 0.35s ease-out;
+}
+
+.img-zoom-wrapper:hover .img-zoom {
+  transform: scale(1.05);
+}
