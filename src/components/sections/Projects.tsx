@@ -24,7 +24,6 @@ interface Project {
   title: string
   missionType: string
   date: string
-  description: string
   image?: unknown
   tags: string[]
   slug: string
@@ -111,7 +110,6 @@ export default function Projects({ projects }: ProjectsProps) {
               title={project.title}
               missionType={project.missionType}
               date={project.date ? formatProjectDate(project.date) : ''}
-              description={project.description}
               imageUrl={project.image ? urlFor(project.image).width(800).quality(80).auto('format').url() : undefined}
               tags={project.tags ?? []}
               slug={project.slug}
