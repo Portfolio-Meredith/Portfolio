@@ -48,8 +48,29 @@ export const projectsQuery = `
     description,
     image,
     tags,
+    link,
     "slug": slug.current,
     order
+  }
+`
+
+export const projectSlugsQuery = `
+  *[_type == "project" && defined(slug.current)] {
+    "slug": slug.current
+  }
+`
+
+export const projectBySlugQuery = `
+  *[_type == "project" && slug.current == $slug][0] {
+    _id,
+    title,
+    missionType,
+    date,
+    description,
+    image,
+    tags,
+    link,
+    "slug": slug.current
   }
 `
 
