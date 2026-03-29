@@ -8,11 +8,12 @@ interface ProjectCardProps {
   missionType: string
   date: string
   imageUrl?: string
+  imageLqip?: string
   tags: string[]
   slug: string
 }
 
-export default function ProjectCard({ title, missionType, date, imageUrl, tags, slug }: ProjectCardProps) {
+export default function ProjectCard({ title, missionType, date, imageUrl, imageLqip, tags, slug }: ProjectCardProps) {
   return (
     <Link
       href={`/projets/${slug}`}
@@ -32,6 +33,8 @@ export default function ProjectCard({ title, missionType, date, imageUrl, tags, 
               fill
               sizes="(max-width: 640px) 100vw, 300px"
               className="object-cover img-zoom"
+              placeholder={imageLqip ? 'blur' : 'empty'}
+              blurDataURL={imageLqip}
             />
           ) : (
             <div className="w-full h-full bg-lavande flex items-center justify-center img-zoom">

@@ -3,21 +3,7 @@
 import { motion } from 'motion/react'
 import SectionPill from '@/components/ui/SectionPill'
 import ProjectCard from '@/components/ui/ProjectCard'
-import { createImageUrlBuilder } from '@sanity/image-url'
-import { createClient } from 'next-sanity'
-
-const builder = createImageUrlBuilder(
-  createClient({
-    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production',
-    apiVersion: '2024-01-01',
-    useCdn: true,
-  })
-)
-
-function urlFor(source: unknown) {
-  return builder.image(source as Parameters<typeof builder.image>[0])
-}
+import { urlFor } from '@/sanity/lib/image'
 
 interface Project {
   _id: string
@@ -25,6 +11,7 @@ interface Project {
   missionType: string
   date: string
   image?: unknown
+  imageLqip?: string
   tags: string[]
   slug: string
 }
@@ -109,6 +96,7 @@ export default function Projects({ projects }: ProjectsProps) {
               missionType={project.missionType}
               date={project.date ? formatProjectDate(project.date) : ''}
               imageUrl={project.image ? urlFor(project.image).width(800).quality(80).auto('format').url() : undefined}
+              imageLqip={project.imageLqip}
               tags={project.tags ?? []}
               slug={project.slug}
             />

@@ -7,9 +7,10 @@ interface HeroProps {
   title: string
   sub: string
   avatarUrl?: string
+  avatarLqip?: string
 }
 
-export default function Hero({ title, sub, avatarUrl }: HeroProps) {
+export default function Hero({ title, sub, avatarUrl, avatarLqip }: HeroProps) {
   const words = title.split(/(\s+)/)
   const wordCount = words.filter((w) => w.trim()).length
 
@@ -72,6 +73,8 @@ export default function Hero({ title, sub, avatarUrl }: HeroProps) {
             height={80}
             className="object-cover w-full h-full"
             priority
+            placeholder={avatarLqip ? 'blur' : 'empty'}
+            blurDataURL={avatarLqip}
           />
         ) : (
           <span style={{ fontSize: '2rem' }} aria-hidden="true">👋</span>
