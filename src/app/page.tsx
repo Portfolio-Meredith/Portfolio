@@ -27,8 +27,37 @@ export default async function Home() {
     ? builder.image(settings.avatar).width(160).quality(80).auto('format').url()
     : undefined
 
+  const sameAs = [
+    settings?.linkedinUrl,
+  ].filter(Boolean)
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Mérédith Mardirossian',
+    jobTitle: 'Étudiante en communication — Stratégie de marque & digital',
+    url: 'https://meredithmardirossian.fr',
+    address: { '@type': 'PostalAddress', addressLocality: 'Lyon', addressCountry: 'FR' },
+    alumniOf: { '@type': 'EducationalOrganization', name: 'EFAP Lyon' },
+    knowsAbout: ['Stratégie de marque', 'Communication digitale', 'Social media', 'Content marketing', 'Brand positioning'],
+    seeks: 'Stage ou alternance en communication à Lyon',
+    ...(sameAs.length > 0 && { sameAs }),
+    ...(settings?.email && { email: settings.email }),
+    ...(settings?.linkedinUrl && {
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'professional',
+        url: settings.linkedinUrl,
+      },
+    }),
+  }
+
   return (
     <div className="bg-bg min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <main className="mx-auto" style={{ maxWidth: '620px', padding: '0 1.5rem' }}>
         <Hero
           title={settings?.heroTitle ?? "bonjour, je suis\nmérédith 👋"}

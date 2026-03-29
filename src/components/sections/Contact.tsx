@@ -81,17 +81,17 @@ export default function Contact({ linkedinUrl, email, cvPdfUrl }: ContactProps) 
         transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 }}
       >
         {linkedinUrl && (
-          <Btn href={linkedinUrl} target="_blank" rel="noopener noreferrer">
+          <Btn href={linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label="Voir le profil LinkedIn de Mérédith Mardirossian">
             LinkedIn ↗
           </Btn>
         )}
         {email && (
-          <Btn href={`mailto:${email}`}>
+          <Btn href={`mailto:${email}`} aria-label={`Envoyer un e-mail à ${email}`}>
             {email} ↗
           </Btn>
         )}
         {cvPdfUrl && (
-          <Btn href={cvPdfUrl} target="_blank" rel="noopener noreferrer">
+          <Btn href={cvPdfUrl} target="_blank" rel="noopener noreferrer" aria-label="Télécharger le CV de Mérédith Mardirossian en PDF">
             ↓ Télécharger mon CV
           </Btn>
         )}
