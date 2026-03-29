@@ -19,6 +19,7 @@ interface Project {
   date?: string
   description?: string
   image?: unknown
+  imageLqip?: string
   tags?: string[]
   link?: string
   slug: string
@@ -118,6 +119,8 @@ export default async function ProjectPage({
               sizes="(max-width: 640px) 100vw, 620px"
               className="object-cover"
               priority
+              placeholder={project.imageLqip ? 'blur' : 'empty'}
+              blurDataURL={project.imageLqip}
             />
           </div>
         )}

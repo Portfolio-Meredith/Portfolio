@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 import SectionPill from '@/components/ui/SectionPill'
 
 interface Skill {
@@ -40,7 +40,7 @@ export default function Skills({ skills }: SkillsProps) {
       className="text-center"
       style={{ padding: '5rem 1.5rem' }}
     >
-      <motion.div
+      <m.div
         variants={fadeUp}
         initial="hidden"
         whileInView="show"
@@ -48,9 +48,9 @@ export default function Skills({ skills }: SkillsProps) {
         transition={{ duration: 0.4, ease: 'easeOut', delay: 0 }}
       >
         <SectionPill>Compétences</SectionPill>
-      </motion.div>
+      </m.div>
 
-      <motion.h2
+      <m.h2
         className="text-fg"
         style={{
           fontSize: '2.5rem',
@@ -66,9 +66,9 @@ export default function Skills({ skills }: SkillsProps) {
         transition={{ duration: 0.4, ease: 'easeOut', delay: 0.08 }}
       >
         Ce que je sais faire
-      </motion.h2>
+      </m.h2>
 
-      <motion.p
+      <m.p
         className="text-muted mb-8"
         style={{ fontSize: '0.875rem', lineHeight: 1.8 }}
         variants={fadeUp}
@@ -78,9 +78,9 @@ export default function Skills({ skills }: SkillsProps) {
         transition={{ duration: 0.4, ease: 'easeOut', delay: 0.14 }}
       >
         Mes domaines de compétences en communication.
-      </motion.p>
+      </m.p>
 
-      <motion.div
+      <m.div
         className="text-left"
         variants={fadeUp}
         initial="hidden"
@@ -98,7 +98,7 @@ export default function Skills({ skills }: SkillsProps) {
             </p>
             <div className="flex flex-wrap gap-1.5">
               {items.map((skill, tagIndex) => (
-                <motion.span
+                <m.span
                   key={skill._id}
                   className="border border-lavande text-gris rounded-full"
                   style={{
@@ -116,12 +116,12 @@ export default function Skills({ skills }: SkillsProps) {
                   }}
                 >
                   {skill.label}
-                </motion.span>
+                </m.span>
               ))}
             </div>
           </div>
         ))}
-      </motion.div>
+      </m.div>
     </section>
   )
 }

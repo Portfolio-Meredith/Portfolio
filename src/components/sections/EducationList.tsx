@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 import CvItem from '@/components/ui/CvItem'
 
 interface Education {
@@ -24,7 +24,7 @@ export default function EducationList({ education }: EducationListProps) {
 
   return (
     <section aria-label="Formation">
-      <motion.p
+      <m.p
         className="text-fg mb-5"
         style={{ fontSize: '1.05rem', fontWeight: 700, letterSpacing: '-0.02em' }}
         initial={{ opacity: 0, y: 10 }}
@@ -33,10 +33,10 @@ export default function EducationList({ education }: EducationListProps) {
         transition={{ duration: 0.4, ease: 'easeOut' }}
       >
         Formation
-      </motion.p>
+      </m.p>
       <div className="flex flex-col gap-5">
         {education.map((edu, index) => (
-          <motion.div
+          <m.div
             key={edu._id}
             initial={{ opacity: 0, x: -8 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -52,7 +52,7 @@ export default function EducationList({ education }: EducationListProps) {
               date={`${edu.startYear} — ${edu.endYear}`}
               websiteUrl={edu.websiteUrl}
             />
-          </motion.div>
+          </m.div>
         ))}
       </div>
     </section>

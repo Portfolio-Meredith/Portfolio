@@ -26,6 +26,7 @@ export default async function Home() {
   const avatarUrl = settings?.avatar
     ? builder.image(settings.avatar).width(160).quality(80).auto('format').url()
     : undefined
+  const avatarLqip = settings?.avatarLqip as string | undefined
 
   const sameAs = [
     settings?.linkedinUrl,
@@ -63,6 +64,7 @@ export default async function Home() {
           title={settings?.heroTitle ?? "bonjour, je suis\nmérédith 👋"}
           sub={settings?.heroSub ?? "Étudiante en communication à l'EFAP Lyon — Stratégie de marque & digital"}
           avatarUrl={avatarUrl}
+          avatarLqip={avatarLqip}
         />
 
         <hr className="border-t border-border my-10" />

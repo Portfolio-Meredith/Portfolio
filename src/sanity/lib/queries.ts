@@ -4,6 +4,7 @@ export const settingsQuery = `
     heroSub,
     about,
     avatar,
+    "avatarLqip": avatar.asset->metadata.lqip,
     linkedinUrl,
     email,
     "cvPdfUrl": cvPdf.asset->url
@@ -47,6 +48,7 @@ export const projectsQuery = `
     date,
     description,
     image,
+    "imageLqip": image.asset->metadata.lqip,
     tags,
     link,
     "slug": slug.current,
@@ -68,6 +70,7 @@ export const projectBySlugQuery = `
     date,
     description,
     image,
+    "imageLqip": image.asset->metadata.lqip,
     tags,
     link,
     "slug": slug.current
