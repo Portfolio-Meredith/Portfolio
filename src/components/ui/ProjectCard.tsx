@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { Card, CardContent } from '@/components/ui/card'
 import Tag from './Tag'
 
@@ -13,8 +14,8 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ title, missionType, date, imageUrl, tags, slug }: ProjectCardProps) {
   return (
-    <a
-      href={`#${slug}`}
+    <Link
+      href={`/projets/${slug}`}
       className="flex flex-col flex-1 group"
       aria-label={`Voir le projet : ${title}`}
     >
@@ -68,6 +69,6 @@ export default function ProjectCard({ title, missionType, date, imageUrl, tags, 
           </div>
         </CardContent>
       </Card>
-    </a>
+    </Link>
   )
 }
