@@ -88,8 +88,8 @@ export default function Projects({ projects }: ProjectsProps) {
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 + index * 0.1 }}
+            viewport={{ once: true, margin: '0px' }}
+            transition={{ duration: 0.3, ease: 'easeOut', delay: index * 0.05 }}
           >
             <ProjectCard
               title={project.title}
