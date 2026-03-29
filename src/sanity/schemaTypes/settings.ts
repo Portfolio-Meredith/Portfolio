@@ -2,31 +2,49 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'settings',
-  title: 'Paramètres',
+  title: 'Réglages du site',
   type: 'document',
   fields: [
-    defineField({ name: 'heroTitle', title: 'Titre Hero', type: 'string' }),
-    defineField({ name: 'heroSub', title: 'Sous-titre Hero', type: 'string' }),
+    defineField({
+      name: 'heroTitle',
+      title: 'Titre principal (Hero)',
+      type: 'string',
+      description: 'Ex : "bonjour, je suis mérédith 👋"',
+      validation: (r) => r.required(),
+    }),
+    defineField({
+      name: 'heroSub',
+      title: 'Accroche (Hero)',
+      type: 'string',
+      description: 'Ligne courte sous le titre — ex : "Étudiante en communication à l\'EFAP Lyon"',
+      validation: (r) => r.required(),
+    }),
+    defineField({
+      name: 'avatar',
+      title: 'Photo de profil',
+      type: 'image',
+      description: 'Format carré recommandé, minimum 400 × 400 px',
+      options: { hotspot: true },
+    }),
     defineField({
       name: 'about',
-      title: 'À propos',
+      title: 'Texte "À propos"',
+      description: 'Paragraphe de présentation — le gras et l\'italique sont supportés',
       type: 'array',
       of: [
         {
           type: 'block',
           marks: {
             decorators: [
-              { title: 'Strong', value: 'strong' },
-              { title: 'Em', value: 'em' },
+              { title: 'Gras', value: 'strong' },
+              { title: 'Italique', value: 'em' },
             ],
             annotations: [
               {
                 name: 'link',
                 type: 'object',
                 title: 'Lien',
-                fields: [
-                  { name: 'href', type: 'url', title: 'URL' },
-                ],
+                fields: [{ name: 'href', type: 'url', title: 'URL' }],
               },
             ],
           },
@@ -34,13 +52,26 @@ export default defineType({
       ],
     }),
     defineField({
-      name: 'avatar',
-      title: 'Photo',
-      type: 'image',
-      options: { hotspot: true },
+      name: 'linkedinUrl',
+      title: 'Profil LinkedIn',
+      type: 'url',
+      description: 'https://linkedin.com/in/…',
     }),
-    defineField({ name: 'linkedinUrl', title: 'URL LinkedIn', type: 'url' }),
-    defineField({ name: 'email', title: 'Email', type: 'string' }),
-    defineField({ name: 'cvPdf', title: 'CV (PDF)', type: 'file' }),
+    defineField({
+      name: 'email',
+      title: 'Adresse e-mail de contact',
+      type: 'string',
+      description: 'Apparaît dans le bouton "Me contacter"',
+    }),
+    defineField({
+      name: 'cvPdf',
+      title: 'CV au format PDF',
+      type: 'file',
+      description: 'Remplacer ce fichier pour mettre le CV à jour',
+      options: { accept: '.pdf' },
+    }),
   ],
+  preview: {
+    prepare: () => ({ title: 'Réglages du site' }),
+  },
 })

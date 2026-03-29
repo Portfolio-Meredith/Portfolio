@@ -29,6 +29,7 @@ export default function ProjectCard({ title, missionType, date, imageUrl, tags, 
               src={imageUrl}
               alt={title}
               fill
+              sizes="(max-width: 640px) 100vw, 300px"
               className="object-cover img-zoom"
             />
           ) : (
