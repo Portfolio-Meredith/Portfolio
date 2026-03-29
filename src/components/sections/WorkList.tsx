@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 import CvItem from '@/components/ui/CvItem'
 
 interface Experience {
@@ -31,7 +31,7 @@ export default function WorkList({ experiences }: WorkListProps) {
 
   return (
     <section aria-label="Expérience professionnelle">
-      <motion.p
+      <m.p
         className="text-fg mb-5"
         style={{ fontSize: '1.05rem', fontWeight: 700, letterSpacing: '-0.02em' }}
         initial={{ opacity: 0, y: 10 }}
@@ -40,7 +40,7 @@ export default function WorkList({ experiences }: WorkListProps) {
         transition={{ duration: 0.4, ease: 'easeOut' }}
       >
         Expérience professionnelle
-      </motion.p>
+      </m.p>
       <div className="flex flex-col gap-5">
         {experiences.map((exp, index) => {
           const startLabel = formatDate(exp.startDate)
@@ -48,7 +48,7 @@ export default function WorkList({ experiences }: WorkListProps) {
           const dateLabel = exp.isCurrent ? startLabel : `${startLabel} — ${endLabel}`
 
           return (
-            <motion.div
+            <m.div
               key={exp._id}
               initial={{ opacity: 0, x: -8 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -64,7 +64,7 @@ export default function WorkList({ experiences }: WorkListProps) {
                 date={dateLabel}
                 isCurrent={exp.isCurrent}
               />
-            </motion.div>
+            </m.div>
           )
         })}
       </div>

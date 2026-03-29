@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 import SectionPill from '@/components/ui/SectionPill'
 import Btn from '@/components/ui/Btn'
 
@@ -22,7 +22,7 @@ export default function Contact({ linkedinUrl, email, cvPdfUrl }: ContactProps) 
       className="text-center"
       style={{ padding: '5rem 1.5rem' }}
     >
-      <motion.div
+      <m.div
         variants={fadeUp}
         initial="hidden"
         whileInView="show"
@@ -30,9 +30,9 @@ export default function Contact({ linkedinUrl, email, cvPdfUrl }: ContactProps) 
         transition={{ duration: 0.4, ease: 'easeOut', delay: 0 }}
       >
         <SectionPill>Contact</SectionPill>
-      </motion.div>
+      </m.div>
 
-      <motion.h2
+      <m.h2
         className="text-fg mb-4"
         style={{
           fontSize: '2.5rem',
@@ -47,9 +47,9 @@ export default function Contact({ linkedinUrl, email, cvPdfUrl }: ContactProps) 
         transition={{ duration: 0.4, ease: 'easeOut', delay: 0.08 }}
       >
         Travaillons ensemble
-      </motion.h2>
+      </m.h2>
 
-      <motion.p
+      <m.p
         className="text-muted mb-8 mx-auto"
         style={{ fontSize: '0.875rem', lineHeight: 1.8, maxWidth: '440px' }}
         variants={fadeUp}
@@ -70,9 +70,9 @@ export default function Contact({ linkedinUrl, email, cvPdfUrl }: ContactProps) 
           </a>
         )}
         .
-      </motion.p>
+      </m.p>
 
-      <motion.div
+      <m.div
         className="flex justify-center gap-3 flex-wrap"
         variants={fadeUp}
         initial="hidden"
@@ -95,7 +95,7 @@ export default function Contact({ linkedinUrl, email, cvPdfUrl }: ContactProps) 
             ↓ Télécharger mon CV
           </Btn>
         )}
-      </motion.div>
+      </m.div>
     </section>
   )
 }

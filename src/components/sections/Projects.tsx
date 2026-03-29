@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 import SectionPill from '@/components/ui/SectionPill'
 import ProjectCard from '@/components/ui/ProjectCard'
 import { urlFor } from '@/sanity/lib/image'
@@ -40,7 +40,7 @@ export default function Projects({ projects }: ProjectsProps) {
       className="text-center"
       style={{ padding: '5rem 1.5rem' }}
     >
-      <motion.div
+      <m.div
         variants={fadeUp}
         initial="hidden"
         whileInView="show"
@@ -48,9 +48,9 @@ export default function Projects({ projects }: ProjectsProps) {
         transition={{ duration: 0.4, ease: 'easeOut', delay: 0 }}
       >
         <SectionPill>Projets</SectionPill>
-      </motion.div>
+      </m.div>
 
-      <motion.h2
+      <m.h2
         className="text-fg"
         style={{
           fontSize: '2.5rem',
@@ -66,9 +66,9 @@ export default function Projects({ projects }: ProjectsProps) {
         transition={{ duration: 0.4, ease: 'easeOut', delay: 0.08 }}
       >
         Mes derniers travaux
-      </motion.h2>
+      </m.h2>
 
-      <motion.p
+      <m.p
         className="text-muted mb-8 mx-auto"
         style={{ fontSize: '0.875rem', lineHeight: 1.8, maxWidth: '480px' }}
         variants={fadeUp}
@@ -78,11 +78,11 @@ export default function Projects({ projects }: ProjectsProps) {
         transition={{ duration: 0.4, ease: 'easeOut', delay: 0.14 }}
       >
         Une sélection de projets réalisés en formation et en stage.
-      </motion.p>
+      </m.p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
         {projects.map((project, index) => (
-          <motion.div
+          <m.div
             key={project._id}
             className="flex flex-col"
             variants={fadeUp}
@@ -100,7 +100,7 @@ export default function Projects({ projects }: ProjectsProps) {
               tags={project.tags ?? []}
               slug={project.slug}
             />
-          </motion.div>
+          </m.div>
         ))}
       </div>
     </section>

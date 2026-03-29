@@ -17,6 +17,7 @@ export default function ProjectCard({ title, missionType, date, imageUrl, imageL
   return (
     <Link
       href={`/projets/${slug}`}
+      prefetch={true}
       className="flex flex-col flex-1 group"
       aria-label={`Voir le projet : ${title}`}
     >

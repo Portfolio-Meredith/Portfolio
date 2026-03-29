@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 
 interface HeroProps {
   title: string
@@ -34,7 +34,7 @@ export default function Hero({ title, sub, avatarUrl, avatarLqip }: HeroProps) {
             word.trim() === '' ? (
               word.includes('\n') ? <br key={i} /> : ' '
             ) : (
-              <motion.span
+              <m.span
                 key={i}
                 className="inline-block"
                 initial={{ opacity: 0, y: 12 }}
@@ -44,11 +44,11 @@ export default function Hero({ title, sub, avatarUrl, avatarLqip }: HeroProps) {
                 {word}
                 {/* espace après chaque mot sauf en fin de ligne */}
                 {words[i + 1] && !words[i + 1].includes('\n') ? '\u00A0' : ''}
-              </motion.span>
+              </m.span>
             )
           )}
         </h1>
-        <motion.p
+        <m.p
           className="text-muted mt-3"
           style={{ fontSize: '0.875rem', lineHeight: 1.8 }}
           initial={{ opacity: 0, y: 8 }}
@@ -56,9 +56,9 @@ export default function Hero({ title, sub, avatarUrl, avatarLqip }: HeroProps) {
           transition={{ duration: 0.4, ease: 'easeOut', delay: wordCount * 0.06 + 0.1 }}
         >
           {sub}
-        </motion.p>
+        </m.p>
       </div>
-      <motion.div
+      <m.div
         className="shrink-0 rounded-full border border-border overflow-hidden bg-lavande flex items-center justify-center"
         style={{ width: '80px', height: '80px' }}
         initial={{ opacity: 0, scale: 0.85 }}
@@ -79,7 +79,7 @@ export default function Hero({ title, sub, avatarUrl, avatarLqip }: HeroProps) {
         ) : (
           <span style={{ fontSize: '2rem' }} aria-hidden="true">👋</span>
         )}
-      </motion.div>
+      </m.div>
     </section>
   )
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 import { PortableText } from 'next-sanity'
 
 interface AboutProps {
@@ -10,7 +10,7 @@ interface AboutProps {
 
 export default function About({ content }: AboutProps) {
   return (
-    <motion.section
+    <m.section
       aria-label="À propos"
       className="cv-section"
       initial={{ opacity: 0, y: 10 }}
@@ -46,6 +46,6 @@ export default function About({ content }: AboutProps) {
           }}
         />
       </div>
-    </motion.section>
+    </m.section>
   )
 }
