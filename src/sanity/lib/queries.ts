@@ -22,7 +22,8 @@ export const experiencesQuery = `
     "logoUrl": logo.asset->url,
     startDate,
     endDate,
-    isCurrent
+    isCurrent,
+    description
   }
 `
 
