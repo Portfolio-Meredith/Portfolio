@@ -1,6 +1,8 @@
 'use client'
 
-import { m } from 'motion/react'
+import { useState } from 'react'
+import { m, AnimatePresence } from 'motion/react'
+import { ChevronDown } from 'lucide-react'
 import CvItem from '@/components/ui/CvItem'
 
 interface Experience {
@@ -14,6 +16,7 @@ interface Experience {
   startDate: string
   endDate?: string
   isCurrent?: boolean
+  description?: string
 }
 
 function formatDate(dateStr: string) {
@@ -27,6 +30,8 @@ interface WorkListProps {
 }
 
 export default function WorkList({ experiences }: WorkListProps) {
+  const [openId, setOpenId] = useState<string | null>(null)
+
   if (!experiences.length) return null
 
   return (
@@ -46,6 +51,8 @@ export default function WorkList({ experiences }: WorkListProps) {
           const startLabel = formatDate(exp.startDate)
           const endLabel = exp.isCurrent ? '' : (exp.endDate ? formatDate(exp.endDate) : '')
           const dateLabel = exp.isCurrent ? startLabel : `${startLabel} — ${endLabel}`
+          const isOpen = openId === exp._id
+          const hasDescription = !!exp.description
 
           return (
             <m.div
@@ -55,15 +62,62 @@ export default function WorkList({ experiences }: WorkListProps) {
               viewport={{ once: true, margin: '-30px' }}
               transition={{ duration: 0.35, ease: 'easeOut', delay: index * 0.08 }}
             >
-              <CvItem
-                initials={exp.initials}
-                color={exp.color}
-                logoUrl={exp.logoUrl}
-                name={`${exp.company} · ${exp.city}`}
-                role={exp.role}
-                date={dateLabel}
-                isCurrent={exp.isCurrent}
-              />
+              <div
+                className={hasDescription ? 'cursor-pointer' : ''}
+                onClick={hasDescription ? () => setOpenId(isOpen ? null : exp._id) : undefined}
+                role={hasDescription ? 'button' : undefined}
+                aria-expanded={hasDescription ? isOpen : undefined}
+                tabIndex={hasDescription ? 0 : undefined}
+                onKeyDown={hasDescription ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpenId(isOpen ? null : exp._id) } } : undefined}
+              >
+                <div className="flex items-center gap-2">
+                  <div className="flex-1 min-w-0">
+                    <CvItem
+                      initials={exp.initials}
+                      color={exp.color}
+                      logoUrl={exp.logoUrl}
+                      name={`${exp.company} · ${exp.city}`}
+                      role={exp.role}
+                      date={dateLabel}
+                      isCurrent={exp.isCurrent}
+                    />
+                  </div>
+                  {hasDescription && (
+                    <ChevronDown
+                      size={14}
+                      aria-hidden="true"
+                      className="shrink-0 text-subtle transition-transform duration-200"
+                      style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                    />
+                  )}
+                </div>
+              </div>
+
+              <AnimatePresence initial={false}>
+                {isOpen && exp.description && (
+                  <m.div
+                    key="description"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.25, ease: 'easeInOut' }}
+                    style={{ overflow: 'hidden' }}
+                  >
+                    <p
+                      className="text-muted"
+                      style={{
+                        fontSize: '0.8rem',
+                        lineHeight: 1.75,
+                        paddingLeft: '58px',
+                        paddingTop: '0.5rem',
+                        paddingBottom: '0.25rem',
+                      }}
+                    >
+                      {exp.description}
+                    </p>
+                  </m.div>
+                )}
+              </AnimatePresence>
             </m.div>
           )
         })}
